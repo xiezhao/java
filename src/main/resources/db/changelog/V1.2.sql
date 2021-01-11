@@ -1,0 +1,1 @@
+INSERT INTO `test`.`test_user_tab` (`userId`, `userAccount`, `password`, `userStatus`, `addTime`) VALUES (1, '12', '123', 11, '2021-01-11 14:19:29');
