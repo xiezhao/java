@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.pattern.chain.HandlerRequest;
-import com.example.demo.pattern.chain.MainHandler;
+import com.example.demo.pattern.responsibilitychain.HandlerRequest;
+import com.example.demo.pattern.responsibilitychain.MainHandler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

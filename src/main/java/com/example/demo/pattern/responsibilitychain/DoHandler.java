@@ -1,4 +1,4 @@
-package com.example.demo.pattern.chain;
+package com.example.demo.pattern.responsibilitychain;
 
 public interface DoHandler {
 

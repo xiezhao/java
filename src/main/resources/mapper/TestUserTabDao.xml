@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mybatis.TestUserTabDao">
+  <resultMap id="BaseResultMap" type="com.example.demo.mybatis.TestUserTab">
+    <id column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userAccount" jdbcType="VARCHAR" property="useraccount" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="userStatus" jdbcType="BOOLEAN" property="userstatus" />
+    <result column="addTime" jdbcType="TIMESTAMP" property="addtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userId, userAccount, `password`, userStatus, addTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from test_user_tab
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from test_user_tab
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="userId" keyProperty="userid" parameterType="com.example.demo.mybatis.TestUserTab" useGeneratedKeys="true">
+    insert into test_user_tab (userAccount, `password`, userStatus, 
+      addTime)
+    values (#{useraccount,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{userstatus,jdbcType=BOOLEAN}, 
+      #{addtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="userId" keyProperty="userid" parameterType="com.example.demo.mybatis.TestUserTab" useGeneratedKeys="true">
+    insert into test_user_tab
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="useraccount != null">
+        userAccount,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="userstatus != null">
+        userStatus,
+      </if>
+      <if test="addtime != null">
+        addTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="useraccount != null">
+        #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userstatus != null">
+        #{userstatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.mybatis.TestUserTab">
+    update test_user_tab
+    <set>
+      <if test="useraccount != null">
+        userAccount = #{useraccount,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userstatus != null">
+        userStatus = #{userstatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="addtime != null">
+        addTime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.mybatis.TestUserTab">
+    update test_user_tab
+    set userAccount = #{useraccount,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      userStatus = #{userstatus,jdbcType=BOOLEAN},
+      addTime = #{addtime,jdbcType=TIMESTAMP}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

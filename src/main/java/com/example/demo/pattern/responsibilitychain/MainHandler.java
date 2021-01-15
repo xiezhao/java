@@ -1,23 +1,22 @@
-package com.example.demo.pattern.chain;
+package com.example.demo.pattern.responsibilitychain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service("aHandler")
-public class AHandler implements DoHandler {
+@Component
+public class MainHandler implements DoHandler {
 
     private DoHandler doHandler;
 
     @Override
     public void handler(HandlerRequest handlerRequest) {
-        System.out.println("我是AHandler，处理name=" + handlerRequest.getName());
+        System.out.println("开始接进请求");
         getHandler().handler(handlerRequest);
     }
 
-
     @Autowired
-    @Qualifier("bHandler")
+    @Qualifier("aHandler")
     @Override
     public void setHandler(DoHandler doHandler) {
         this.doHandler = doHandler;

@@ -1,4 +1,4 @@
-package com.example.demo.pattern.chain;
+package com.example.demo.pattern.responsibilitychain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
